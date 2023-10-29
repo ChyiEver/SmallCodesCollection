@@ -26,11 +26,50 @@ def format_time(filename, pattern = r'\d{4}-\d{1,2}-\d{1,2}-\d{1,2}-\d{1,2}-\d{1
     return formatted_time
 ```
 
-## 2.
+## 2 Find the position of the timeth occurrence of string substr in str
 
-...
+```python
+# 找字符串substr在str中第time次出现的位置
+    
+def findSubStrIndex(substr, str, time):
+    times = str.count(substr)
+    if (times == 0) or (times < time):
+        pass
+    else:
+        i = 0
+        index = -1
+        while i < time:
+            index = str.find(substr, index+1)
+            i+=1
+        return index
+```
 
-## Updating
+## 3 Find the local maximums of a one-dimensional digital signal
+
+```python
+# 寻找信号的局部极大值
+def find_local_peaks(t,signal):
+    """
+    参数：
+    signal -- 一个列表，表示输入的信号
+    
+    返回值：
+    一个列表，包含所有局部极大值的索引
+    """
+
+    if len(signal) < 3:
+        return []  # 信号长度不足以找到局部极大值
+    
+    peaks = []
+    peaks_index = []
+    for i in range(2, len(signal)-3):
+        if signal[i] >= signal[i-1] and signal[i] >= signal[i+1] and signal[i] > signal[i-2] and signal[i] > signal[i+2] :#and signal[i] > 0:
+            peaks_index.append(t[i])
+            peaks.append(signal[i])
+    
+    return np.array(peaks), np.array(peaks_index)
+
+```
 
 ...
 
